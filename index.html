@@ -5,6 +5,36 @@
   <title>SQ</title>
 </head>
 <body>
+<script src="pdf.mjs"></script>
+<script>
+        // Disable worker to avoid cross-origin issues when running locally
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/build/pdf.worker.js';
+
+        // Specify the PDF file path
+        var pdfPath = 'SQ.pdf';
+
+        // Load the PDF
+        pdfjsLib.getDocument(pdfPath).promise.then(function(pdf) {
+            // Fetch the first page
+            pdf.getPage(1).then(function(page) {
+                var scale = 1.5;
+                var viewport = page.getViewport({ scale: scale });
+
+                // Prepare canvas using PDF page dimensions
+                var canvas = document.getElementById('the-canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                // Render PDF page into canvas context
+                var renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    </script>
 <div>
     <iframe src="SQ.pdf" id='dashboard-frame' style="position:absolute; top:0; left:0; width:100%; height:100%; border: none; overflow: hidden;""></iframe>
 </div>
