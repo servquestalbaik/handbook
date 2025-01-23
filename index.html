@@ -8,7 +8,7 @@
 <script type="module" src="pdf.mjs"></script>
 <script type="module">
         // Disable worker to avoid cross-origin issues when running locally
-        pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/build/pdf.worker.mjs';
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.mjs';
 
         // Specify the PDF file path
         var pdfPath = 'SQ.pdf';
