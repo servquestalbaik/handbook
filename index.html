@@ -5,8 +5,8 @@
   <title>SQ</title>
 </head>
 <body>
-<script src="pdf.mjs"></script>
-<script>
+<script type="module" src="pdf.mjs"></script>
+<script type="module">
         // Disable worker to avoid cross-origin issues when running locally
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs/build/pdf.worker.mjs';
 
@@ -35,8 +35,6 @@
             });
         });
     </script>
-<div>
-    <iframe src="SQ.pdf" id='dashboard-frame' style="position:absolute; top:0; left:0; width:100%; height:auto%; border: none; overflow: hidden;""></iframe>
-</div>
+
 </body>
 </html>
